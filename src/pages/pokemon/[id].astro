@@ -1,6 +1,7 @@
 ---
 import type { GetStaticPaths } from "astro";
-import MainLayout from "../../layouts/MainLayout.astro"
+
+import PokemonCard from '@components/pokemons/PokemonCard.astro';
 import type { PokemonListResponse } from "../../interfaces/pokemont-list.response";
 
 export const getStaticPaths = (async() => {
@@ -12,6 +13,9 @@ export const getStaticPaths = (async() => {
         props: { name: name, url: url },
     }));
 }) satisfies GetStaticPaths;
+
+const { id } = Astro.params;
+const { name, url } = Astro.props;
 
 ---
 
